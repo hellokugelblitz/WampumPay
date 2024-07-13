@@ -13,10 +13,10 @@ It works like Venmo but with _fake money_, and has some social media features. I
 
 ## Demo / Screenshots
 <div style="display:flex; flex-direction:row; gap:10px; justify-content: center; align-items: center;">
-    <img src="/demo-pictures/demo.gif" width="160" />
     <img src="/demo-pictures/SignIn.png" width="160" />
     <img src="/demo-pictures/SignUp.png" width="160" />
     <img src="/demo-pictures/Home.png" width="160" />
+    <img src="/demo-pictures/demo.gif" width="160" />
     <img src="/demo-pictures/Transactions.png" width="160" />
     <img src="/demo-pictures/Leaderboard.png" width="160" />
 </div>
