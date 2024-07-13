@@ -1,4 +1,4 @@
-# Welcome to Wampum Pay 👋
+# 👋 Welcome to Wampum Pay 🟣
 
 It works like Venmo but with _fake money_, and has some social media features. It was built in React Native with a Firebase auth system and data management. I credit the idea for this app to Henry Shwabe!
 
