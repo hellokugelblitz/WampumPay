@@ -1,6 +1,14 @@
 # Welcome to Wampum Pay 👋
 
-An app made by Jack LN. It works like Venmo but with fake money, and has some social media features. It was built in React Native with a Firebase auth system and data management.
+It works like Venmo but with _fake money_, and has some social media features. It was built in React Native with a Firebase auth system and data management. I credit the idea for this app to Henry Shwabe!
+
+### 1.0 Features:
+- Authentication and account creation using Firebase.
+- Payment system with in-app currency between users (the Wampum).
+- The user can view transactions between users.
+- The user can add favorite users or 'friends', who will appear at the top of their payments window.
+- The user can update profile their information or delete their profile, their data will remain persistent even after account removal.
+- The users receive push notifications when a payment is received.
 
 ## Demo / Screenshots
 
