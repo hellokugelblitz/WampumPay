@@ -5,11 +5,14 @@ It works like Venmo but with _fake money_, and has some social media features. I
 ### 1.0 Features:
 - Authentication and account creation using Firebase.
 - Payment system with in-app currency between users (the Wampum).
-- The user can view transactions between users.
+- Leaderboard with up-to-date display.
+- The user can view transactions between themselves and other users.
 - The user can add favorite users or 'friends', who will appear at the top of their payments window.
 - The user can update profile their information or delete their profile, their data will remain persistent even after account removal.
 - The users receive push notifications when a payment is received.
 
 ## Demo / Screenshots
+
+
 
 
