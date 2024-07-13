@@ -14,14 +14,14 @@ It works like Venmo but with _fake money_, and has some social media features. I
 ## Demo / Screenshots
 
 <div style="display:flex; flex-direction:row; gap:10px; justify-content: center; align-items: center;">
-  <div style="display: flex; flex-direction:column; justify-content:center; align-items: center;">
+  <img src="/demo-pictures/demo.gif" width="300" />
+</div>
+
+<div style="display:flex; flex-direction:row; gap:10px; justify-content: center; align-items: center;">
     <img src="/demo-pictures/Home.png" width="200" />
-    <p style="text-align: center;">The home screen</p>
-  </div>
-  <div style="display: flex; flex-direction:column; justify-content:center; align-items: center;">
     <img src="/demo-pictures/Home.png" width="200" />
-    <p style="text-align: center;">The home screen</p>
-  </div>
+    <img src="/demo-pictures/Home.png" width="200" />
+    <img src="/demo-pictures/Home.png" width="200" />
 </div>
 
 
