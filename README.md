@@ -13,6 +13,6 @@ It works like Venmo but with _fake money_, and has some social media features. I
 
 ## Demo / Screenshots
 
-![Home Page](/demo-pictures/Home.png)
+![Home Page](/demo-pictures/Home.png | width=100)
 
 
