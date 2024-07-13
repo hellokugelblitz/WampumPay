@@ -18,8 +18,10 @@ It works like Venmo but with _fake money_, and has some social media features. I
     <img src="/demo-pictures/Home.png" width="200" />
     <p style="text-align: center;">The home screen</p>
   </div>
-  <img src="/demo-pictures/Home.png" width="200" />
-  <img src="/demo-pictures/Home.png" width="200" />
+  <div style="display: flex; flex-direction:column; justify-content:center; align-items: center;">
+    <img src="/demo-pictures/Home.png" width="200" />
+    <p style="text-align: center;">The home screen</p>
+  </div>
 </div>
 
 
