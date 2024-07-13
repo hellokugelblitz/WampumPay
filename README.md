@@ -12,16 +12,13 @@ It works like Venmo but with _fake money_, and has some social media features. I
 - The users receive push notifications when a payment is received.
 
 ## Demo / Screenshots
-
 <div style="display:flex; flex-direction:row; gap:10px; justify-content: center; align-items: center;">
-  <img src="/demo-pictures/demo.gif" width="300" />
-</div>
-
-<div style="display:flex; flex-direction:row; gap:10px; justify-content: center; align-items: center;">
+    <img src="/demo-pictures/demo.gif" width="200" />
+    <img src="/demo-pictures/SignIn.png" width="200" />
+    <img src="/demo-pictures/SignUp.png" width="200" />
     <img src="/demo-pictures/Home.png" width="200" />
-    <img src="/demo-pictures/Home.png" width="200" />
-    <img src="/demo-pictures/Home.png" width="200" />
-    <img src="/demo-pictures/Home.png" width="200" />
+    <img src="/demo-pictures/Transactions.png" width="200" />
+    <img src="/demo-pictures/leaderboard.png" width="200" />
 </div>
 
 
