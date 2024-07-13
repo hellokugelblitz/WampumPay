@@ -13,6 +13,9 @@ It works like Venmo but with _fake money_, and has some social media features. I
 
 ## Demo / Screenshots
 
-<img src="/demo-pictures/Home.png" width="200" />
+<div style="display:flex; flex-direction:row; gap:10px;">
+  <img src="/demo-pictures/Home.png" width="200" />
+  <img src="/demo-pictures/Home.png" width="200" />
+</div>
 
 
