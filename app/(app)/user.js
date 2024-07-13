@@ -38,6 +38,7 @@ export default function UserOptions() {
       let data = docSnap.data();
       // Check for valid information:
       if (!(await isImgUrl(newUrl))) {
+        console.log("ProfileUrl Field:", newUrl);
         Alert.alert("Please enter a valid image URL");
       } else if (newUsername.length > 15 || newUsername.length < 1) {
         Alert.alert("Please enter better username (1-15 characters)");
@@ -48,8 +49,6 @@ export default function UserOptions() {
           profileUrl: newUrl,
         });
       }
-
-      console.log("User Information Updated...");
 
       // Update local user data so this is reflected in UI...
       await updateUserData(user?.userId);
@@ -234,7 +233,7 @@ async function isImgUrl(url) {
   try {
     const response = await fetch(url, { method: "HEAD" });
     return (
-      response.ok && response.headers.get("content-type").startsWith("image/")
+      response.ok && (response.headers.get("content-type").startsWith("image/") || response.headers.get("content-type").startsWith("data:image/"))
     );
   } catch (error) {
     console.log("Not an image: ", url);

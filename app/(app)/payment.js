@@ -79,27 +79,32 @@ export default function Payment() {
       data.push({ ...doc.data() });
     });
 
-    // Cut out based on the search parameters
-    const cutData = data.filter((u) =>
-      u.username.toLowerCase().includes(currentSearch.toLowerCase())
-    );
+    try {
+      // Cut out based on the search parameters
+      const cutData = data.filter((u) =>
+        u.username.toLowerCase().includes(currentSearch.toLowerCase())
+      );
 
-    // Get rid of the currently signed in user!
-    const cutCurrentUser = cutData.filter(
-      (u) => !u.userId.includes(user?.userId)
-    );
+      // Get rid of the currently signed in user!
+      const cutCurrentUser = cutData.filter(
+        (u) => !u.userId.includes(user?.userId)
+      );
+      
+      // Separate friends and non-friends
+      const friends = cutCurrentUser.filter((u) =>
+        user.friends.includes(u.userId)
+      );
+      const nonFriends = cutCurrentUser.filter(
+        (u) => !user.friends.includes(u.userId)
+      );
 
-    // Separate friends and non-friends
-    const friends = cutCurrentUser.filter((u) =>
-      user.friends.includes(u.userId)
-    );
-    const nonFriends = cutCurrentUser.filter(
-      (u) => !user.friends.includes(u.userId)
-    );
+      // Combine friends and non-friends, with friends displaying at the top
+      const sortedData = [...friends, ...nonFriends];
+      setUsers(sortedData);
+    } catch(e) {
+      Alert.alert("Data Error", "Is your account old? There was an issue grabbing your data.")
+    }
 
-    // Combine friends and non-friends, with friends displaying at the top
-    const sortedData = [...friends, ...nonFriends];
-    setUsers(sortedData);
     setLoading(false); // Stop loading once data is fetched
   };
 
