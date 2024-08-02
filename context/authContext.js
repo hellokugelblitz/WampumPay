@@ -7,7 +7,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-} from "firebase/auth";
+  RecaptchaVerifier,
+  PhoneAuthProvider,
+  multiFactor,
+  getAuth
+} from 'firebase/auth';
 import { auth, db } from "../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -67,7 +71,6 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  //Part 4 21:00
   const logout = async () => {
     try {
       await signOut(auth);
@@ -77,37 +80,42 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const register = async (email, password, username, profileUrl) => {
+  const register = async (email, password, username, profileUrl, phoneNumber) => {
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+      const user = response.user;
+  
+      // Validate profile image URL
       const isValidImage = await isImgUrl(profileUrl);
-      const validProfileUrl = isValidImage
-        ? profileUrl
-        : placeholderImageUrl; // Use placeholder image if URL is not valid
-
-      await setDoc(doc(db, "users", response?.user?.uid), {
+      console.log("Working with this profile URL: ", profileUrl)
+      const validProfileUrl = isValidImage ? profileUrl : 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg';
+      console.log("validProfileUrl", validProfileUrl);
+  
+      await setDoc(doc(db, "users", user.uid), {
         username,
         profileUrl: validProfileUrl,
-        userId: response?.user?.uid,
+        userId: user.uid,
         wampnum: 20,
         friends: [],
         active: true,
       });
-      return { success: true, data: response?.user };
+  
+      return { success: true, data: { user } };
+  
     } catch (e) {
       let msg = e.message;
       if (msg.includes("(auth/invalid-email)")) {
-        msg = "fix your email";
+        msg = "Fix your email";
       } else if (msg.includes("(auth/weak-password)")) {
-        msg = "fix your password";
+        msg = "Fix your password";
       } else if (msg.includes("(auth/email-already-in-use)")) {
-        msg = "your email is already being used for an account silly";
+        msg = "Your email is already being used for an account";
+      } else if (msg.includes("(auth/invalid-phone-number)")) {
+        msg = "Invalid phone number";
+      } else {
+        msg = "An unknown error occurred, " + e.message;
       }
-
+  
       return { success: false, msg };
     }
   };
