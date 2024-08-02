@@ -75,7 +75,7 @@ export default function SignUp() {
       passwordRef.current,
       usernameRef.current,
       profileRef.current,
-      phoneInputRef.current
+      phoneNumber
     );
     setLoading(false);
 
@@ -83,37 +83,6 @@ export default function SignUp() {
     if (!response.success) {
       Alert.alert("Sign up Issue", response.msg);
     }
-
-    // Prompt user for verification code if MFA is enabled
-    // if (response.data?.verificationId) {
-    //   Alert.alert(
-    //     "Verify Phone Number",
-    //     "Please enter the verification code sent to your phone.",
-    //     [
-    //       {
-    //         text: "Submit",
-    //         onPress: async () => {
-    //           try {
-    //             const credential = PhoneAuthProvider.credential(
-    //               response.data.verificationId,
-    //               verificationCode
-    //             );
-    //             const user = response.data.user;
-    //             await user.multiFactor.enroll(credential, "My phone number");
-    //             Alert.alert("Success", "Your account has been created!");
-    //           } catch (error) {
-    //             Alert.alert("Verification Error", error.message);
-    //           }
-    //         },
-    //       },
-    //     ],
-    //     {
-    //       cancelable: false,
-    //     }
-    //   );
-    // } else {
-    //   Alert.alert("Success", "Your account has been created!");
-    // }
 
   };
 
