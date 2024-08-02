@@ -11,6 +11,13 @@ It works like Venmo but with _fake money_, and has some social media features. I
 - The user can update profile their information or delete their profile, their data will remain persistent even after account removal.
 - The users receive push notifications when a payment is received.
 
+### Potential future additions
+- Upload to app store or Google Play store ~ as soon as I get the money.
+- UI, better look and feel, need a designer.
+- More robust friend system with profile pages and user BIO.
+- Personal transactions screen on home page.
+- "Mining"? could gamify this.
+
 ## Demo / Screenshots
 <div style="display:flex; flex-direction:row; gap:15px; justify-content: center; align-items: center;">
     <img src="/demo-pictures/SignIn.png" width="160" />
