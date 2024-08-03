@@ -7,6 +7,14 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "plugins": {
+      "expo-build-properties":
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+    },
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -14,6 +22,7 @@
     },
     "ios": {
       "supportsTablet": true,
+      "useFrameworks": "static",
       "bundleIdentifier": "com.jacknoble0303.wpayapp"
     },
     "android": {
@@ -29,7 +38,8 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true

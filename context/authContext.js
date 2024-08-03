@@ -10,7 +10,8 @@ import {
   RecaptchaVerifier,
   PhoneAuthProvider,
   multiFactor,
-  getAuth
+  getAuth,
+  sendEmailVerification
 } from 'firebase/auth';
 import { auth, db } from "../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -82,7 +83,16 @@ export const AuthContextProvider = ({ children }) => {
 
   const register = async (email, password, username, profileUrl, phoneNumber) => {
     try {
+
       const response = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Potential Email Verification stuff
+      //   const response = await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      //     // send verification mail.
+      //     userCredential.user.sendEmailVerification();
+      //     auth.signOut();
+      // });
+
       const user = response.user;
   
       // Validate profile image URL
@@ -119,6 +129,19 @@ export const AuthContextProvider = ({ children }) => {
       return { success: false, msg };
     }
   };
+
+  const validateEmail = async(user) => {
+
+  }
+
+  const validatePhoneNumber = async(phoneNUmber) => {
+
+  }
+
+  const verifyIfUserIsEnrolled = async(user) => {
+    const enrolledFactors = multiFactor(user).enrolledFactors;
+    return enrolledFactors.length > 0;
+  }
 
   return (
     <AuthContext.Provider
