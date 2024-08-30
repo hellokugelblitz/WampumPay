@@ -17,9 +17,10 @@ import { auth, db } from "../firebaseConfig";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 // Local imports
-import { placeholderImageUrl } from '../utils/common';
+import { placeHolderImageUrl } from '../utils/common';
 
 export const AuthContext = createContext();
+const PLACEHOLDERIMAGE = 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg';
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -81,10 +82,38 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const register = async (email, password, username, profileUrl, phoneNumber) => {
+  const register = async (email, password, username, profileUrl) => {
     try {
 
+      // Validate profile image URL
+      console.log("Profile URL passed in: ", profileUrl);
+      const isValidImage = await isImgUrl(profileUrl);
+      console.log("Is this ia valid image? ", isValidImage);
+      console.log("placehodlerURL: ", PLACEHOLDERIMAGE);
+      let validProfileUrl = PLACEHOLDERIMAGE;
+      if(isValidImage){
+        validProfileUrl = profileUrl;
+      }
+
+      console.log("validProfileUrl:", validProfileUrl);
+
+      // Create the auth token... NOT USER INFORMATION...
       const response = await createUserWithEmailAndPassword(auth, email, password);
+      const user = response.user;
+
+      // I have moved the database registration into a try catch so I can know if there is issues with database...
+      try {
+        await setDoc(doc(db, "users", user.uid), {
+          username,
+          profileUrl: validProfileUrl,
+          userId: user.uid,
+          wampnum: 20,
+          friends: [],
+          active: true,
+        });
+      } catch (error) {
+        console.error("Error writing user to Firestore: ", error);
+      }
 
       // Potential Email Verification stuff
       //   const response = await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -92,23 +121,6 @@ export const AuthContextProvider = ({ children }) => {
       //     userCredential.user.sendEmailVerification();
       //     auth.signOut();
       // });
-
-      const user = response.user;
-  
-      // Validate profile image URL
-      const isValidImage = await isImgUrl(profileUrl);
-      console.log("Working with this profile URL: ", profileUrl)
-      const validProfileUrl = isValidImage ? profileUrl : placeholderImageUrl;
-      console.log("validProfileUrl", validProfileUrl);
-  
-      await setDoc(doc(db, "users", user.uid), {
-        username,
-        profileUrl: validProfileUrl,
-        userId: user.uid,
-        wampnum: 20,
-        friends: [],
-        active: true,
-      });
   
       return { success: true, data: { user } };
   
@@ -119,7 +131,7 @@ export const AuthContextProvider = ({ children }) => {
       } else if (msg.includes("(auth/weak-password)")) {
         msg = "Fix your password";
       } else if (msg.includes("(auth/email-already-in-use)")) {
-        msg = "Your email is already being used for an account";
+        console.log(msg);
       } else if (msg.includes("(auth/invalid-phone-number)")) {
         msg = "Invalid phone number";
       } else {

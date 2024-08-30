@@ -35,7 +35,7 @@ export default function PaymentHeader({ title, navigation, showProfileMenu }) {
     };
 
     return (
-        <View style={{ paddingTop: ios ? top : top + 10 }} className="flex-row justify-between px-5 bg-purple-900 pb-6 rounded-b-3xl shadow">
+        <View style={{ paddingTop: ios ? top : top + 10 }} className="flex-row justify-between px-5 bg-purple-900 pb-6 shadow">
             <TouchableOpacity onPress={navigation.goBack} className="self-center">
                 <AntDesign name="back" size={35} color="white" />
             </TouchableOpacity>

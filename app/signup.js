@@ -38,10 +38,12 @@ export default function SignUp() {
   const phoneInputRef = useRef(null); // Phone number input reference
 
   const handleRegister = async () => {
-    if (!phoneInputRef.current?.isValidNumber(phoneNumber)) {
-      Alert.alert("Please input a valid phone number...");
-      return;
-    }
+    
+    // More scrapped phone number functionality.
+    // if (!phoneInputRef.current?.isValidNumber(phoneNumber)) {
+    //   Alert.alert("Please input a valid phone number...");
+    //   return;
+    // }
 
     let errorMessage = "";
 
@@ -58,9 +60,11 @@ export default function SignUp() {
     if (!emailRef.current || emailRef.current.trim() === "") {
       errorMessage += "Email address is required.\n";
     }
-    if (!profileRef.current || profileRef.current.trim() === "") {
-      errorMessage += "Profile picture URL is required.\n";
-    }
+
+    // allowing the profile image thing to be empty allows for lots of wiggle room with the urls not working...
+    // if (!profileRef.current || profileRef.current.trim() === "") {
+    //   errorMessage += "Profile picture URL is required.\n";
+    // }
 
     // If there are any error messages, show them to the user
     if (errorMessage) {
@@ -74,8 +78,7 @@ export default function SignUp() {
       emailRef.current,
       passwordRef.current,
       usernameRef.current,
-      profileRef.current,
-      phoneNumber
+      profileRef.current
     );
     setLoading(false);
 
@@ -168,7 +171,8 @@ export default function SignUp() {
               </View>
 
               {/* PHONE NUMBER INPUT! Tehehehehehe */}
-              <View style={{height: hp(7), flexDirection:"row", alignSelf:"center"}}>
+              
+              {/* <View style={{height: hp(7), flexDirection:"row", alignSelf:"center"}}>
                 <PhoneInput
                   ref={phoneInputRef}
                   defaultValue={phoneNumber}
@@ -184,7 +188,8 @@ export default function SignUp() {
                   }}
                   textInputStyle={{ padding: 0, fontSize: 16, fontWeight: '600', color: "#404040" }} // For users number
                 />
-              </View>
+              </View> */}
+            
 
               <View>
                 {loading ? (

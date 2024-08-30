@@ -36,7 +36,7 @@ export default function HomeHeader() {
     }
 
     return (
-        <View style={{paddingTop: ios?top:top+10}} className="flex-row justify-between px-5 bg-purple-900 pb-6 rounded-b-3xl shadow">
+        <View style={{paddingTop: ios?top+4:top+10}} className="flex-row justify-between items-center align-middle px-5 bg-purple-900 pt-6 pb-6 shadow">
             <View>
                 <Image
                     style={{height: hp(4), aspectRatio:6/2}}

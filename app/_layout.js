@@ -37,7 +37,7 @@ const MainLayout = () => {
 
 export default function RootLayout() {
   return (
-    <MenuProvider>
+    <MenuProvider className="bg-red">
       <AuthContextProvider>
         <MainLayout />
       </AuthContextProvider>

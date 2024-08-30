@@ -2,11 +2,12 @@
   "expo": {
     "name": "Wampum",
     "slug": "w-pay-app",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#ffffff",
     "plugins": {
       "expo-build-properties":
         {
@@ -21,9 +22,9 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
-      "useFrameworks": "static",
-      "bundleIdentifier": "com.jacknoble0303.wpayapp"
+      "bundleIdentifier": "com.wampumcomp.wampum"
     },
     "android": {
       "adaptiveIcon": {
